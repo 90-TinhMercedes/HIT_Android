@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/editTextUsername"
+                android:hint="Username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:hint="Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/buttonLogin"
+                android:background="@drawable/custom_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login">
+            </Button>
+
+            <TextView
+                android:id="@+id/textViewResult"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:background="#C12BBCFF"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Result">
+            </TextView>
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/nam"
+                    android:text="Nam"
+                    android:checked="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RadioButton
+                    android:id="@+id/nu"
+                    android:text="Nu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RadioGroup>
+            <TextView
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Languages ?">
+            </TextView>
+            <CheckBox
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:text="English"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </CheckBox>
+            <CheckBox
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:text="Korea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </CheckBox>
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wifi"
+                android:textSize="30sp">
+            </Switch>
+            <ToggleButton
+                android:textOff="Studio"
+                android:textOn="Android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </ProgressBar>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <DatePicker
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </DatePicker>
+    <TimePicker
+         android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TimePicker>
+
+
+</LinearLayout>

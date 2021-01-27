@@ -21,12 +21,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout2"
+        android:id="@+id/relativeLayout02"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginTop="5dp"
         android:background="#FFF"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout01"
         tools:layout_editor_absoluteX="0dp">
 
         <ImageView
@@ -94,7 +94,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/relativeLayout01"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginTop="4dp"
@@ -177,10 +177,10 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout02" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout3"
+        android:id="@+id/relativeLayout03"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="#FFF"
@@ -253,14 +253,14 @@
 
     <ImageView
         android:id="@+id/imageViewAddAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout03"
         app:layout_constraintVertical_bias="0.869"
-        app:srcCompat="@drawable/add_alarm" />
+        app:srcCompat="@drawable/alarm_clock_03" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

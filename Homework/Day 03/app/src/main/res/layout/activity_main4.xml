@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity4"
+    android:background="#9700BCD4">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#B98BC34A">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imgBack"
+            android:text="Today"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#FFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
+        <ImageView
+            android:id="@+id/imageAlarm02"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/alarm_clock" />
+
+        <TextView
+            android:id="@+id/textViewTime02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/imageAlarm02"
+            android:text="19:32"
+            android:textColor="#000000"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewContent02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTime02"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/imageAlarm02"
+            android:text="Đi coffee với bạn gái"
+            android:textColor="#FF5722"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewRemaining02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="42dp"
+            android:layout_toRightOf="@+id/textViewTime02"
+            android:text="Remaining: a day"
+            android:textColor="#2196F3"
+            android:textSize="15sp" />
+
+        <Switch
+            android:id="@+id/switchOnOff02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/imageAlarm02"
+            android:layout_alignRight="@+id/imageAlarm02"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginEnd="-310dp"
+            android:layout_marginRight="-310dp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/menu_vertical" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout02"
+        android:background="#A4F44336"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout01">
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:id="@+id/imgRain"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/rain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvRain"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/imgRain"
+            android:textStyle="bold"
+            android:text="Trời mưa vừa"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/imgRain"
+            android:layout_below="@+id/tvRain"
+            android:text="Đón bạn gái sớm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="55mm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout03"
+        android:background="#E403A9F4"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout02">
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:id="@+id/imgUmbrella"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/umbrella"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvUmbrella"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/imgUmbrella"
+            android:textStyle="bold"
+            android:text="Nhớ mang dù khi đi"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/imgUmbrella"
+            android:layout_below="@+id/tvUmbrella"
+            android:text="Về nhà sớm đón con gái"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout04"
+        android:background="#DF4CAF50"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout03">
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:id="@+id/imgJava"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/java"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvCoffee"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/imgJava"
+            android:textStyle="bold"
+            android:text="Quán Coffee Nhổn"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/imgJava"
+            android:layout_below="@+id/tvCoffee"
+            android:text="Đang kiêng đồ ngọt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="220dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout04"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/relativeLayout05">
+        <ImageView
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/imgAddNote"
+            android:layout_centerVertical="true"
+            android:src="@drawable/add_document"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

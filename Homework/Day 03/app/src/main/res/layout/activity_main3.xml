@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity3"
+    android:background="#9700BCD4">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#B98BC34A">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imgBack"
+            android:text="Today"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#FFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
+        <ImageView
+            android:id="@+id/imageAlarm02"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/alarm_clock" />
+
+        <TextView
+            android:id="@+id/textViewTime02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/imageAlarm02"
+            android:text="20:38"
+            android:textColor="#000000"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewContent02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTime02"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/imageAlarm02"
+            android:text="Dẫn vợ đi xem phim"
+            android:textColor="#FF5722"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewRemaining02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="42dp"
+            android:layout_toRightOf="@+id/textViewTime02"
+            android:text="Remaining: 4 hours"
+            android:textColor="#2196F3"
+            android:textSize="15sp" />
+
+        <Switch
+            android:id="@+id/switchOnOff02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/imageAlarm02"
+            android:layout_alignRight="@+id/imageAlarm02"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginEnd="-310dp"
+            android:layout_marginRight="-310dp" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/menu_vertical" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout02"
+        android:background="#A4F44336"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout01">
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:id="@+id/imgCloud"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/windy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvCloud"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/imgCloud"
+            android:textStyle="bold"
+            android:text="Gió nhẹ, có nơi giật cấp 2 - 3"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/imgCloud"
+            android:layout_below="@+id/tvCloud"
+            android:text="Lưu ý cả hai mặc ấm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout03"
+        android:background="#E403A9F4"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout02">
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:id="@+id/imgPopcorn"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/popcorn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvGift"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/imgPopcorn"
+            android:textStyle="bold"
+            android:text="Popcorn and Coca"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/imgPopcorn"
+            android:layout_below="@+id/tvGift"
+            android:text="Nhớ mua!!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout04"
+        android:background="#DF4CAF50"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout03">
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:id="@+id/imgMoon"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/moon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvMoon"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/imgMoon"
+            android:textStyle="bold"
+            android:text="Về khuya nhiệt độ giảm"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/imgMoon"
+            android:layout_below="@+id/tvMoon"
+            android:text="Mang thêm áo khi đi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:text="15\u00B0"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout06"
+        android:background="#949C27B0"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout04">
+        <ImageView
+            android:layout_marginRight="15dp"
+            android:id="@+id/imgTicket"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvTicket"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/imgTicket"
+            android:textStyle="bold"
+            android:text="Kiểm tra lại vé"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/imgTicket"
+            android:layout_below="@+id/tvTicket"
+            android:text="Quay về nhà ngoại đón con gái"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="220dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout04"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/relativeLayout05">
+        <ImageView
+            android:layout_marginRight="30dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/imgAddNote"
+            android:layout_centerVertical="true"
+            android:src="@drawable/add_document"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

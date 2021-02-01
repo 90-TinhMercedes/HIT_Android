@@ -10,9 +10,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:id="@+id/btnConfirm"
+        android:textColorHint="#C1009688"
+        android:textAllCaps="false"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/timePicker"
+        android:text="Confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:textColorHint="#C1009688"
+        android:id="@+id/btnBack"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:textAllCaps="false"
+        android:layout_below="@+id/timePicker"
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <ImageView
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/timePicker"
+        android:layout_below="@+id/btnBack"
         android:id="@+id/imageHitIcon"
         android:layout_width="200dp"
         android:layout_height="200dp"

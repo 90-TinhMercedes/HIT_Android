@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="75dp"
+        android:layout_height="75dp">
+    </ImageView>
+
+    <TextView
+        android:textSize="25sp"
+        android:text="Chi Tinh"
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgAvatar">
+    </TextView>
+    <TextView
+        android:text="GFE LoveVeigar"
+        android:layout_toRightOf="@+id/imgAvatar"
+        android:layout_below="@+id/tvName"
+        android:id="@+id/tvCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+
+
+</RelativeLayout>

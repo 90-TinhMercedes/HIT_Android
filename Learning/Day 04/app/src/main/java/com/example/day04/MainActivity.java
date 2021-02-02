@@ -26,43 +26,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Mappings();
-        list.add(new Person("Doan", 21));
-        list.add(new Person("Diep", 22));
-        list.add(new Person("Hung", 20));
+
+        list.add(new Person("Tình", 20));
+        list.add(new Person("Tâm", 20));
+        list.add(new Person("Nam", 20));
+        list.add(new Person("Tùng", 20));
 
 
-//        btnSubmit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                name = edtName.getText().toString();
-//                age = Integer.parseInt(edtAge.getText().toString());
-//                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-//
-////                intent.putExtra("name", name);
-////                intent.putExtra("age", age);
-//
-//                Person person = new Person(name, age);
-//                intent.putExtra("object", (Parcelable) person);
-//                intent.putParcelableArrayListExtra("list", )
-//
-//                startActivity(intent);
-//            }
-//        });
-
-        btnAction.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://translate.google.com/?hl=vi"));
+                name = edtName.getText().toString();
+                age = Integer.parseInt(edtAge.getText().toString());
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+//                intent.putExtra("name", name);
+//                intent.putExtra("age", age);
+
+                Person person = new Person(name, age);
+                intent.putExtra("object", (Parcelable) person); // put một đối tượng
+                intent.putParcelableArrayListExtra("list", (ArrayList<? extends Parcelable>) list); // put một list đối tượng
+
+
                 startActivity(intent);
+
             }
         });
 
-//
     }
 
     private void Mappings() {
-        edtName = (EditText) findViewById(R.id.idName);
-        edtAge = (EditText) findViewById(R.id.idAge);
+        edtName = (EditText) findViewById(R.id.edtName);
+        edtAge = (EditText) findViewById(R.id.edtAge);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         btnAction = (Button) findViewById(R.id.btnAction);
     }

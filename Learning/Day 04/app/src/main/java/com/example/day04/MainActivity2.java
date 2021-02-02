@@ -21,22 +21,25 @@ public class MainActivity2 extends AppCompatActivity {
 
         Mappings();
 
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-        int age = intent.getIntExtra("age", 0);
+        Intent intent = getIntent(); //nhận intent bên Activity 01
 
-        tvName.setText(name);
-        tvAge.setText(String.valueOf(age));
+//        String name = intent.getStringExtra("name"); // biến name sẽ nhận thông tin tên
+//        int age = intent.getIntExtra("age", 0);
+
+//        tvName.setText(name);
+//        tvAge.setText(String.valueOf(age));
 
         Person person = intent.getParcelableExtra("object");
         tvName.setText(person.getName());
-        tvAge.setText(String.valueOf(age));
+        tvAge.setText(String.valueOf(person.getAge()));
 
         List<Person> list = new ArrayList<>();
         list = intent.getParcelableArrayListExtra("list");
-        for(Person x:list){
-            Log.d("list", "onCreate: ");
+        for (Person x:list
+             ) {
+            Log.d("listPerson", x.toString());
         }
+
 
 
     }

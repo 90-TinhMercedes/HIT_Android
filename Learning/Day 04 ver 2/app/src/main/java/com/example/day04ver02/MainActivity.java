@@ -1,11 +1,13 @@
 package com.example.day04ver02;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,13 +58,25 @@ public class MainActivity extends AppCompatActivity {
 
         ChampAdapter champAdapter = new ChampAdapter(list, MainActivity.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
-
+//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 2, RecyclerView.HORIZONTAL, false);
 
         rcChampLoL.setLayoutManager(layoutManager);
         rcChampLoL.setAdapter(champAdapter);
+        champAdapter.setWhenOnClickItem(new WhenOnClickItem() {
+            @Override
+            public void onClickImage(ChampLoL champLoL) {
+                Toast.makeText(MainActivity.this, champLoL.getAvatar(), Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onClickChamp(ChampLoL champLoL) {
+                Toast.makeText(MainActivity.this, champLoL.getChamp(), Toast.LENGTH_SHORT).show();
+            }
 
-
-
+            @Override
+            public void onCLickInfo(ChampLoL champLoL) {
+                Toast.makeText(MainActivity.this, champLoL.getInfo(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

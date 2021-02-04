@@ -17,6 +17,13 @@ public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> 
     List<ChampLoL> list; // Bước 2
     Context context;
 
+    // sau Interface WhenOnClickItem
+    WhenOnClickItem whenOnClickItem;
+
+    public void setWhenOnClickItem(WhenOnClickItem whenOnClickItem) {
+        this.whenOnClickItem = whenOnClickItem;
+    }
+
     // Bước 3
     public ChampAdapter(List<ChampLoL> list, Context context) {
         this.list = list;
@@ -41,9 +48,24 @@ public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> 
         holder.imgAvatar.setImageResource(champLoL.getAvatar());
         holder.tvChamp.setText(champLoL.getChamp());
         holder.tvInfo.setText(champLoL.getInfo());
-
-
-
+        holder.imgAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                whenOnClickItem.onClickImage(champLoL);
+            }
+        });
+        holder.tvChamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                whenOnClickItem.onClickChamp(champLoL);
+            }
+        });
+        holder.tvInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                whenOnClickItem.onCLickInfo(champLoL);
+            }
+        });
     }
 
     // truyền vào size của list

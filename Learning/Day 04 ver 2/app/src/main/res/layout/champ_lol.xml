@@ -11,8 +11,8 @@
 
     <TextView
         android:textSize="25sp"
-        android:text="Chi Tinh"
-        android:id="@+id/tvName"
+        android:text="Veigar"
+        android:id="@+id/tvChamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/imgAvatar">
@@ -20,8 +20,8 @@
     <TextView
         android:text="GFE LoveVeigar"
         android:layout_toRightOf="@+id/imgAvatar"
-        android:layout_below="@+id/tvName"
-        android:id="@+id/tvCode"
+        android:layout_below="@+id/tvChamp"
+        android:id="@+id/tvInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </TextView>

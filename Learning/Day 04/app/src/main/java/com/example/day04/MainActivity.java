@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Person("Nam", 20));
         list.add(new Person("Tùng", 20));
 
-
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,12 +45,20 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("object", (Parcelable) person); // put một đối tượng
                 intent.putParcelableArrayListExtra("list", (ArrayList<? extends Parcelable>) list); // put một list đối tượng
 
-
                 startActivity(intent);
 
             }
         });
 
+        btnAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/90.TinhMercedes"));
+                Intent intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/nguyenvuhong.quan.7"));
+                Intent intent1 = new Intent(Intent.ACTION_SET_WALLPAPER);
+                startActivity(intent2);
+            }
+        });
     }
 
     private void Mappings() {

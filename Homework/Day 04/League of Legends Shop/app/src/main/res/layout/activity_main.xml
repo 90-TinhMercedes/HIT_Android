@@ -3,9 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/yasuo_background_02"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/logoLoL"
+        android:layout_width="328dp"
+        android:layout_height="198dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_01" />
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoLoL">
+
+        <EditText
+            android:drawablePadding="10dp"
+            android:id="@+id/edtUsername"
+            android:drawableStart="@drawable/ic_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/custom_background_dangky"
+            android:hint="Username"
+            android:padding="8dp"
+            android:textSize="25sp"
+            android:textStyle="italic" />
+        <EditText
+
+            android:inputType="textPassword"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/edtPassword"
+            android:layout_below="@+id/edtUsername"
+            android:drawableStart="@drawable/ic_lock_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/custom_background_dangky"
+            android:hint="Password"
+            android:padding="8dp"
+            android:textSize="25sp"
+            android:textStyle="italic" />
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/btnDangKy"
@@ -16,12 +64,6 @@
         android:text="Đăng ký"
         android:textAllCaps="false" />
 
-    <ImageView
-        android:id="@+id/imgCreateAccSuccessful"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/create_account_successful" />
 
     <ProgressBar
         android:id="@+id/prgbCreateAccount"

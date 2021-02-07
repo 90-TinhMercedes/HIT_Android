@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     ProgressBar prgbCreateAccount;
-    ImageView imgCreateAccSuccessful;
-
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -50,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnDangKy = (Button) findViewById(R.id.btnDangKy);
         prgbCreateAccount = (ProgressBar) findViewById(R.id.prgbCreateAccount);
-        imgCreateAccSuccessful = (ImageView) findViewById(R.id.imgCreateAccSuccessful);
         prgbCreateAccount.setVisibility(View.INVISIBLE);
-        imgCreateAccSuccessful.setVisibility(View.INVISIBLE);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -85,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         prgbCreateAccount.setVisibility(View.INVISIBLE);
-                        imgCreateAccSuccessful.setVisibility(View.VISIBLE);
                         Toast.makeText(MainActivity.this, "Create account successful!", Toast.LENGTH_LONG).show();
                     }
                 }, 4500);
@@ -96,13 +91,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialogDangKy.show();
-            }
-        });
-
-        imgCreateAccSuccessful.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgCreateAccSuccessful.setVisibility(View.INVISIBLE);
             }
         });
     }

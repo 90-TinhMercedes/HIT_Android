@@ -2,17 +2,18 @@ package com.example.leagueoflegendsshop;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -23,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextInputLayout txtILPassword, txtILConfirmPassword, txtILUsername, txtILPhoneNumber;
     private EditText edtPassword, edtConfirmPassword, edtUsername, edtPhoneNumber;
-    private Button btnCancel, btnConfirm, btnDangKy;
-    private Dialog dialogDangKy;
+    private Button btnCancel, btnConfirm, btnRegister;
+    private Dialog dialogRegister;
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         // có ít nhất 01 ký tự số
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     ProgressBar prgbCreateAccount;
+    TextView tvForgotPassword;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -46,22 +48,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnDangKy = (Button) findViewById(R.id.btnDangKy);
-        prgbCreateAccount = (ProgressBar) findViewById(R.id.prgbCreateAccount);
-        prgbCreateAccount.setVisibility(View.INVISIBLE);
+        btnRegister = (Button) findViewById(R.id.btnRegister);
+        tvForgotPassword = (TextView) findViewById(R.id.tvForgotPassword);
 
-        dialogDangKy = new Dialog(MainActivity.this);
-        dialogDangKy.setContentView(R.layout.dialog_dangky);
-        dialogDangKy.setCancelable(false);
-        dialogDangKy.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background_dialog_dangky));
-        dialogDangKy.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialogDangKy.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+        dialogRegister = new Dialog(MainActivity.this);
+        dialogRegister.setContentView(R.layout.dialog_dangky);
+        dialogRegister.setCancelable(false);
+        dialogRegister.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background_dialog_dangky));
+        dialogRegister.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialogRegister.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+        prgbCreateAccount = (ProgressBar) dialogRegister.findViewById(R.id.prgbCreateAccount);
+        prgbCreateAccount.setVisibility(View.INVISIBLE);
 
         Mappings();
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogDangKy.dismiss();
+                dialogRegister.dismiss();
             }
         });
 
@@ -72,37 +77,47 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 prgbCreateAccount.setVisibility(View.VISIBLE);
-                dialogDangKy.dismiss();
+
                 Toast.makeText(MainActivity.this, "Please wait...", Toast.LENGTH_LONG).show();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         prgbCreateAccount.setVisibility(View.INVISIBLE);
+                        dialogRegister.dismiss();
                         Toast.makeText(MainActivity.this, "Create account successful!", Toast.LENGTH_LONG).show();
                     }
-                }, 4500);
+                }, 5500);
             }
         });
 
-        btnDangKy.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogDangKy.show();
+                dialogRegister.show();
             }
         });
+
+        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentForgotPassword = new Intent(Intent.ACTION_VIEW, Uri.parse("https://account.garena.com/recovery#/"));
+                startActivity(intentForgotPassword);
+            }
+        });
+
     }
 
     private void Mappings() {
-        txtILPassword = (TextInputLayout) dialogDangKy.findViewById(R.id.textInputPassword);
-        txtILConfirmPassword = (TextInputLayout) dialogDangKy.findViewById(R.id.textInputConfirmPassword);
-        txtILUsername = (TextInputLayout) dialogDangKy.findViewById(R.id.textInputUsername);
-        txtILPhoneNumber = (TextInputLayout) dialogDangKy.findViewById(R.id.textInputPhoneNumber);
-        edtUsername = (EditText) dialogDangKy.findViewById(R.id.edtUsername);
-        edtPassword = (EditText) dialogDangKy.findViewById(R.id.edtPassword);
-        edtConfirmPassword = (EditText) dialogDangKy.findViewById(R.id.edtConfirmPassword);
-        edtPhoneNumber = (EditText) dialogDangKy.findViewById(R.id.edtPhoneNumber);
-        btnCancel = dialogDangKy.findViewById(R.id.btnCancel);
-        btnConfirm = dialogDangKy.findViewById(R.id.btnConfirm);
+        txtILPassword = (TextInputLayout) dialogRegister.findViewById(R.id.textInputPassword);
+        txtILConfirmPassword = (TextInputLayout) dialogRegister.findViewById(R.id.textInputConfirmPassword);
+        txtILUsername = (TextInputLayout) dialogRegister.findViewById(R.id.textInputUsername);
+        txtILPhoneNumber = (TextInputLayout) dialogRegister.findViewById(R.id.textInputPhoneNumber);
+        edtUsername = (EditText) dialogRegister.findViewById(R.id.edtUsername);
+        edtPassword = (EditText) dialogRegister.findViewById(R.id.edtPassword);
+        edtConfirmPassword = (EditText) dialogRegister.findViewById(R.id.edtConfirmPassword);
+        edtPhoneNumber = (EditText) dialogRegister.findViewById(R.id.edtPhoneNumber);
+        btnCancel = dialogRegister.findViewById(R.id.btnCancel);
+        btnConfirm = dialogRegister.findViewById(R.id.btnConfirm);
     }
 
     private boolean validateUsername() {

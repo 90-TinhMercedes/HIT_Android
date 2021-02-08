@@ -9,57 +9,54 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_marginTop="20dp"
         android:id="@+id/logoLoL"
         android:layout_width="328dp"
         android:layout_height="198dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:src="@drawable/logo_01" />
 
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+
+    <EditText
+        android:id="@+id/edtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logoLoL">
+        android:layout_below="@+id/logoLoL"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/custom_background_dangky"
+        android:drawableStart="@drawable/ic_account"
+        android:drawablePadding="10dp"
+        android:hint="Username"
+        android:padding="15dp"
+        android:textSize="20sp"
+        android:textStyle="italic" />
 
-        <EditText
-            android:drawablePadding="10dp"
-            android:id="@+id/edtUsername"
-            android:drawableStart="@drawable/ic_account"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/custom_background_dangky"
-            android:hint="Username"
-            android:padding="8dp"
-            android:textSize="25sp"
-            android:textStyle="italic" />
-        <EditText
-
-            android:inputType="textPassword"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/edtPassword"
-            android:layout_below="@+id/edtUsername"
-            android:drawableStart="@drawable/ic_lock_02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/custom_background_dangky"
-            android:hint="Password"
-            android:padding="8dp"
-            android:textSize="25sp"
-            android:textStyle="italic" />
-    </RelativeLayout>
-
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtUsername"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/custom_background_dangky"
+        android:drawableStart="@drawable/ic_lock_02"
+        android:drawablePadding="10dp"
+        android:hint="Password"
+        android:padding="15dp"
+        android:textSize="20sp"
+        android:textStyle="italic" />
 
     <Button
+
         android:id="@+id/btnDangKy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#9F2196F3"
+        android:layout_below="@+id/edtPassword"
+        android:background="@drawable/button_custom"
         android:onClick="confirmInput"
         android:text="Đăng ký"
         android:textAllCaps="false" />

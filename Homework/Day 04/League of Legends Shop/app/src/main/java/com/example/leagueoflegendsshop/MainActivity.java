@@ -50,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
         prgbCreateAccount = (ProgressBar) findViewById(R.id.prgbCreateAccount);
         prgbCreateAccount.setVisibility(View.INVISIBLE);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-
         dialogDangKy = new Dialog(MainActivity.this);
         dialogDangKy.setContentView(R.layout.dialog_dangky);
         dialogDangKy.setCancelable(false);

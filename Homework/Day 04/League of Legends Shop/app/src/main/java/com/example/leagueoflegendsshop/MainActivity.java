@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextInputLayout txtILPassword, txtILConfirmPassword, txtILUsername, txtILPhoneNumber;
     private EditText edtPassword, edtConfirmPassword, edtUsername, edtPhoneNumber;
-    private Button btnCancel, btnConfirm, btnRegister;
+    private Button btnCancel, btnConfirm, btnRegister, btnLogIn;
     private Dialog dialogRegister;
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnRegister = (Button) findViewById(R.id.btnRegister);
-        tvForgotPassword = (TextView) findViewById(R.id.tvForgotPassword);
+        MappingsSystem();
+
+
 
 
         dialogRegister = new Dialog(MainActivity.this);
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         prgbCreateAccount = (ProgressBar) dialogRegister.findViewById(R.id.prgbCreateAccount);
         prgbCreateAccount.setVisibility(View.INVISIBLE);
 
-        Mappings();
+        MappingsDialogRegister();
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,10 +105,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentForgotPassword);
             }
         });
-
+        
     }
 
-    private void Mappings() {
+    private void MappingsSystem() {
+        btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnLogIn = (Button) findViewById(R.id.btnLogIn);
+        tvForgotPassword = (TextView) findViewById(R.id.tvForgotPassword);
+    }
+
+    private void MappingsDialogRegister() {
         txtILPassword = (TextInputLayout) dialogRegister.findViewById(R.id.textInputPassword);
         txtILConfirmPassword = (TextInputLayout) dialogRegister.findViewById(R.id.textInputConfirmPassword);
         txtILUsername = (TextInputLayout) dialogRegister.findViewById(R.id.textInputUsername);

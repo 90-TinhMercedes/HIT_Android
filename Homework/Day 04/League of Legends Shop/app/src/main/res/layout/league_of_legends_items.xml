@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_shop"
+    android:layout_margin="5dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_margin="5dp"
+        android:background="@drawable/background_item"
+        android:id="@+id/imgItem"
+        android:layout_width="80dp"
+        android:layout_height="80dp">
+    </ImageView>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:text="Name item"
+        android:layout_toRightOf="@+id/imgItem"
+        android:id="@+id/tvNameItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="MFG: 21/06/2020"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvMFG"
+        android:layout_below="@+id/tvNameItem"
+        android:layout_toRightOf="@+id/imgItem">
+    </TextView>
+
+    <ImageView
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/imgMoney"
+        android:layout_width="20dp"
+        android:layout_height="20dp">
+
+    </ImageView>
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="100"
+        android:layout_toLeftOf="@+id/imgMoney"
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <ImageView
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/imgMoney"
+        android:id="@+id/imgPlus"
+        android:layout_width="20dp"
+        android:layout_height="20dp">
+    </ImageView>
+    <TextView
+        android:textStyle="bold"
+        android:text="05"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tvPrice"
+        android:layout_toLeftOf="@+id/imgPlus"
+        android:id="@+id/tvAmountOrder"
+        android:layout_width="20dp"
+        android:layout_height="20dp">
+    </TextView>
+    <ImageView
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/tvAmountOrder"
+        android:layout_below="@+id/imgMoney"
+        android:id="@+id/imgMinus"
+        android:layout_width="20dp"
+        android:layout_height="20dp">
+    </ImageView>
+
+
+</RelativeLayout>

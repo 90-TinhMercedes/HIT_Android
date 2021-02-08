@@ -1,0 +1,7 @@
+- Picture
+- Name Item
+- Manufacturing Date
+- Price
+- Amount
+- Plus
+- Minus

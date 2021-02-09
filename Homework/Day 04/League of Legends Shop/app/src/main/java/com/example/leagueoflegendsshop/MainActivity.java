@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -36,11 +37,12 @@ public class MainActivity extends AppCompatActivity {
                     ".{6,}" +               // có ít nhất 6 ký tự
                     "$");
     private static final Pattern PHONE_NUMBER_PATTERN =
-            Pattern.compile("^[0-9].{9,}$");
+            Pattern.compile("^[0-9].{8,}$");
 
 
     ProgressBar prgbCreateAccount;
     TextView tvForgotPassword;
+//    RecyclerView rcvLoLItem;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -50,11 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
         MappingsSystem();
 
-
-
-
         dialogRegister = new Dialog(MainActivity.this);
-        dialogRegister.setContentView(R.layout.dialog_dangky);
+        dialogRegister.setContentView(R.layout.dialog_register);
         dialogRegister.setCancelable(false);
         dialogRegister.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background_dialog_dangky));
         dialogRegister.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -105,13 +104,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentForgotPassword);
             }
         });
-        
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentShop = new Intent(MainActivity.this, LeagueOfLegendsItemShop.class);
+                startActivity(intentShop);
+            }
+        });
     }
 
     private void MappingsSystem() {
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnLogIn = (Button) findViewById(R.id.btnLogIn);
         tvForgotPassword = (TextView) findViewById(R.id.tvForgotPassword);
+//        rcvLoLItem = (RecyclerView) findViewById(R.id.rcvLoLItem);
     }
 
     private void MappingsDialogRegister() {

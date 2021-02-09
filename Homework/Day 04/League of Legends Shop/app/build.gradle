@@ -30,6 +30,11 @@ android {
 
 dependencies {
     //noinspection GradleCompatible
+    implementation 'com.android.support:cardview-v7:27.+'
+    // https://mvnrepository.com/artifact/com.android.support/design
+    //noinspection GradleCompatible
+    implementation group: 'com.android.support', name: 'design', version: '28.0.0'
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:26.1.0'
     //noinspection GradleCompatible
     implementation 'com.android.support:design:26.1.0'

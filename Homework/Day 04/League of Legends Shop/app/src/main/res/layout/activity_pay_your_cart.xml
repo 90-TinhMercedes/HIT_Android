@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8600BCD4"
+    android:backgroundTintMode="screen"
+    android:padding="10dp"
+    tools:context=".PayYourCart">
+
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button_custom"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_03" />
+
+    <TextView
+        android:id="@+id/tvEquipment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/imgBack"
+        android:background="@drawable/button_custom"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Trang Bị"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvListOrder"
+        android:layout_width="match_parent"
+        android:layout_height="405dp"
+        android:layout_below="@+id/tvEquipment"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_listview"
+        android:paddingBottom="10dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSumPrice"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_listview"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_dang_nhap"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Phương Thức Thanh Toán"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <RadioButton
+            android:id="@+id/rbShipCOD"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_dang_nhap"
+            android:checked="true"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="50dp"
+            android:paddingBottom="5dp"
+            android:text="Cash On Delivery" />
+
+        <RadioButton
+            android:id="@+id/rbSmartBanking"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/edittext_dang_nhap"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="50dp"
+            android:paddingBottom="5dp"
+            android:text="Smart Banking" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvSumPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rcvListOrder"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_listview"
+        android:drawableStart="@drawable/card"
+        android:drawableEnd="@drawable/money_bag"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="0"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <LinearLayout
+        android:id="@+id/linearButtonPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroupPay"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_listview"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btnCancelPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_button_pay"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="italic|bold" />
+
+        <Button
+            android:id="@+id/btnConfirmPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_button_pay"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="italic|bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearButtonPay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:text="© 2021 TinhMercedes"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+</RelativeLayout>

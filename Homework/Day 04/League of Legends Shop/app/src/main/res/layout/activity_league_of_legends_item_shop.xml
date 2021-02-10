@@ -13,14 +13,17 @@
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/logo_01"></ImageView>
+        android:src="@drawable/logo_01">
+    </ImageView>
 
     <ImageView
+        android:id="@+id/imgLogoCart"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        android:src="@drawable/logo_lmht"></ImageView>
+        android:src="@drawable/logo_lmht">
+    </ImageView>
 
     <TextView
         android:id="@+id/tvSumAmount"
@@ -78,8 +81,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/background_listview"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        tools:ignore="MissingConstraints">
+        android:paddingBottom="10dp">
     </androidx.recyclerview.widget.RecyclerView>
 
     <ImageView
@@ -100,8 +102,8 @@
         android:layout_below="@+id/rcvLoLItem"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/payCard"
         android:background="@drawable/edittext_dang_nhap"
         android:drawableEnd="@drawable/money_bag"
@@ -113,4 +115,19 @@
         android:textStyle="bold|italic">
     </TextView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payCard"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/background_search"
+        android:drawableStart="@drawable/danger"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Báo cáo lạm dụng?"
+        android:textSize="15sp"
+        android:textStyle="italic|bold" />
 </RelativeLayout>

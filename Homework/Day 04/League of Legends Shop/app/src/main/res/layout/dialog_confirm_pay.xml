@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tvQuestionPayConfirm"
+        android:textSize="20sp"
+        android:textStyle="italic|bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="Xác nhận thanh toán 140000$ bằng hình thức: Smart Banking?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/tvQuestionPayConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:textStyle="italic|bold"
+            android:layout_marginRight="50dp"
+            android:textSize="17sp"
+            android:text="No"
+            android:background="@drawable/button_dang_ky"
+            android:textColor="@color/black"
+            android:id="@+id/btnConfirmNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:textStyle="italic|bold"
+            android:layout_marginLeft="50dp"
+            android:textSize="17sp"
+            android:text="Yes"
+            android:background="@drawable/button_dang_ky"
+            android:textColor="@color/black"
+            android:id="@+id/btnConfirmYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarConfirm"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="105dp"
+        android:layout_alignStart="@+id/tvQuestionPayConfirm"
+        android:layout_alignEnd="@+id/tvQuestionPayConfirm"
+        android:layout_marginStart="137dp"
+        android:layout_marginEnd="135dp" />
+
+</RelativeLayout>

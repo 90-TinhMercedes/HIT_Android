@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LeagueOfLegendsShop">
-        <activity android:name=".LeagueOfLegendsItemShop"></activity>
+        <activity android:name=".PayYourCart"></activity>
+        <activity android:name=".LeagueOfLegendsItemShop" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

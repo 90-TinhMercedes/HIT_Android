@@ -53,7 +53,6 @@ public class ItemLoLAdapter extends RecyclerView.Adapter<ItemLoLAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 whenClickItem.clickPlusItem(lolItem);
-                holder.tvAmountOrder.setText(Integer.parseInt(String.valueOf(holder.tvAmountOrder)) + 1);
             }
         });
 
@@ -61,7 +60,6 @@ public class ItemLoLAdapter extends RecyclerView.Adapter<ItemLoLAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 whenClickItem.clickMinusItem(lolItem);
-                holder.tvAmountOrder.setText(Integer.parseInt(String.valueOf(holder.tvAmountOrder)) - 1);
             }
         });
 

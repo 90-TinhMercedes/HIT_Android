@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         dialogRegister.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialogRegister.getWindow().getAttributes().windowAnimations = R.style.animation;
 
+
         prgbCreateAccount = (ProgressBar) dialogRegister.findViewById(R.id.prgbCreateAccount);
         prgbCreateAccount.setVisibility(View.INVISIBLE);
 

@@ -1,6 +1,11 @@
 package com.example.leagueoflegendsshop;
 
-public class LeagueOfLegendsItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class LeagueOfLegendsItem implements Parcelable, Serializable {
     int imageItem;
     String nameItem;
     String MFG;
@@ -20,6 +25,29 @@ public class LeagueOfLegendsItem {
         this.plusItem = plusItem;
         this.minusItem = minusItem;
     }
+
+    protected LeagueOfLegendsItem(Parcel in) {
+        imageItem = in.readInt();
+        nameItem = in.readString();
+        MFG = in.readString();
+        price = in.readInt();
+        amountOrder = in.readInt();
+        money = in.readInt();
+        plusItem = in.readInt();
+        minusItem = in.readInt();
+    }
+
+    public static final Creator<LeagueOfLegendsItem> CREATOR = new Creator<LeagueOfLegendsItem>() {
+        @Override
+        public LeagueOfLegendsItem createFromParcel(Parcel in) {
+            return new LeagueOfLegendsItem(in);
+        }
+
+        @Override
+        public LeagueOfLegendsItem[] newArray(int size) {
+            return new LeagueOfLegendsItem[size];
+        }
+    };
 
     @Override
     public String toString() {
@@ -100,5 +128,22 @@ public class LeagueOfLegendsItem {
 
     public void setMinusItem(int minusItem) {
         this.minusItem = minusItem;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(imageItem);
+        dest.writeString(nameItem);
+        dest.writeString(MFG);
+        dest.writeInt(price);
+        dest.writeInt(amountOrder);
+        dest.writeInt(money);
+        dest.writeInt(plusItem);
+        dest.writeInt(minusItem);
     }
 }

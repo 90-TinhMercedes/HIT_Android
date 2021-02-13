@@ -1,7 +1,9 @@
 package com.example.leagueoflegendsshop;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,15 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private TextInputLayout txtILPassword, txtILConfirmPassword, txtILUsername, txtILPhoneNumber;
     private EditText edtPassword, edtConfirmPassword, edtUsername, edtPhoneNumber;
     private Button btnCancel, btnConfirm, btnRegister, btnLogIn;
-    private Dialog dialogRegister;
+    private Dialog dialogRegister, dialogTurnOff;
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         // có ít nhất 01 ký tự số
@@ -42,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressBar prgbCreateAccount;
     TextView tvForgotPassword;
-//    RecyclerView rcvLoLItem;
+    //    RecyclerView rcvLoLItem;
+    ImageView imgTurnOff;
+    List<AccountLogIn> accountLogIns;
+    EditText edtUser, edtPass;
+    ProgressBar prgbLogIn;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -51,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         MappingsSystem();
+        accountLogIns = new ArrayList<>();
 
         dialogRegister = new Dialog(MainActivity.this);
         dialogRegister.setContentView(R.layout.dialog_register);
@@ -59,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
         dialogRegister.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialogRegister.getWindow().getAttributes().windowAnimations = R.style.animation;
 
-
         prgbCreateAccount = (ProgressBar) dialogRegister.findViewById(R.id.prgbCreateAccount);
         prgbCreateAccount.setVisibility(View.INVISIBLE);
+        prgbLogIn.setVisibility(View.INVISIBLE);
 
         MappingsDialogRegister();
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +86,10 @@ public class MainActivity extends AppCompatActivity {
                 if (!validatePassword() | !validateUsername() | !validateConfirmPassword() | !validatePhoneNumber()) {
                     return;
                 }
-                prgbCreateAccount.setVisibility(View.VISIBLE);
+                prgbCreateAccount.setVisibility(View.VISIBLE); //hiển thị progress bar
+                // add account vào danh sách.
+                accountLogIns.add(new AccountLogIn(edtUsername.getText().toString(), edtPassword.getText().toString()));
+                edtUser.setText(edtUsername.getText());
 
                 Toast.makeText(MainActivity.this, "Please wait...", Toast.LENGTH_LONG).show();
                 new Handler().postDelayed(new Runnable() {
@@ -87,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         dialogRegister.dismiss();
                         Toast.makeText(MainActivity.this, "Create account successful!", Toast.LENGTH_LONG).show();
                     }
-                }, 5500);
+                }, 3000);
             }
         });
 
@@ -108,8 +120,71 @@ public class MainActivity extends AppCompatActivity {
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentShop = new Intent(MainActivity.this, LeagueOfLegendsItemShop.class);
-                startActivity(intentShop);
+                if (edtUser.getText().toString().isEmpty() && edtPass.getText().toString().isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Quý khách chưa có Tài khoản?", Toast.LENGTH_SHORT).show();
+                }
+                else if (edtUser.getText().toString().isEmpty() || edtPass.getText().toString().isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Vui lòng nhập thông tin Tài khoản và Mật khẩu.", Toast.LENGTH_SHORT).show();
+                }  else {
+                    for (AccountLogIn x : accountLogIns
+                    ) {
+                        if (edtUser.getText().toString().compareTo(x.getUsername()) == 0 && edtPass.getText().toString().compareTo(x.getPassword()) == 0) {
+                            prgbLogIn.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    prgbLogIn.setVisibility(View.INVISIBLE);
+                                    Intent intentShop = new Intent(MainActivity.this, LeagueOfLegendsItemShop.class);
+                                    startActivity(intentShop);
+                                    Toast.makeText(MainActivity.this, "Welcome to League of Legends Shop!", Toast.LENGTH_LONG).show();
+                                }
+                            }, 3000);
+                        } else  if (edtUser.getText().toString().compareTo(x.getUsername()) == 0 && edtPass.getText().toString().compareTo(x.getPassword()) != 0){
+                            prgbLogIn.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    prgbLogIn.setVisibility(View.INVISIBLE);
+                                    Toast.makeText(MainActivity.this, "Thông tin tài khoản hoặc Mật khẩu không chính xác.", Toast.LENGTH_SHORT).show();
+                                }
+                            }, 3000);
+                        } else if (edtUser.getText().toString().compareTo(x.getUsername()) != 0 && edtPass.getText().toString().compareTo(x.getPassword()) == 0){
+                            prgbLogIn.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    prgbLogIn.setVisibility(View.INVISIBLE);
+                                    Toast.makeText(MainActivity.this, "Thông tin tài khoản hoặc Mật khẩu không chính xác.", Toast.LENGTH_SHORT).show();
+                                }
+                            }, 3000);
+                        }
+                    }
+                }
+            }
+        });
+
+        imgTurnOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);
+                builder.setTitle("Are you sure you want to exit app?");
+                builder.setMessage("App: League of Legends");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intentTurnOff = new Intent(Intent.ACTION_MAIN);
+                        intentTurnOff.addCategory(Intent.CATEGORY_HOME);
+                        startActivity(intentTurnOff);
+                    }
+
+
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                builder.show();
             }
         });
     }
@@ -119,6 +194,10 @@ public class MainActivity extends AppCompatActivity {
         btnLogIn = (Button) findViewById(R.id.btnLogIn);
         tvForgotPassword = (TextView) findViewById(R.id.tvForgotPassword);
 //        rcvLoLItem = (RecyclerView) findViewById(R.id.rcvLoLItem);
+        imgTurnOff = (ImageView) findViewById(R.id.imgTurnOff);
+        edtUser = (EditText) findViewById(R.id.edtUser);
+        edtPass = (EditText) findViewById(R.id.edtPass);
+        prgbLogIn = (ProgressBar) findViewById(R.id.progressBarLogIn);
     }
 
     private void MappingsDialogRegister() {

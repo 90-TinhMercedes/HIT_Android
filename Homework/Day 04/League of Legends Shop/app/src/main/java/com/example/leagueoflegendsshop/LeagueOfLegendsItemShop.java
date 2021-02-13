@@ -4,13 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +27,13 @@ public class LeagueOfLegendsItemShop extends AppCompatActivity {
     List<LeagueOfLegendsItem> listCart;
 
     TextView tvAmountOrder, tvPay, tvSumAmount;
-    ImageView imgLogoCart;
+    ImageView imgLogoCart, imgLogOut;
+    Dialog dialogLogOut;
+    Button btnLogOutYes, btnLogOutNo;
+    TextView tvQuestionLogOut;
+    ProgressBar progressBarLogOut;
+    CheckBox cbSavePassword;
+    EditText edtUser, edtPass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +44,21 @@ public class LeagueOfLegendsItemShop extends AppCompatActivity {
         tvPay = (TextView) findViewById(R.id.tvPay);
         tvSumAmount = (TextView) findViewById(R.id.tvSumAmount);
         imgLogoCart = (ImageView) findViewById(R.id.imgLogoCart);
+        imgLogOut = (ImageView) findViewById(R.id.imgTurnOff);
+        cbSavePassword = (CheckBox) findViewById(R.id.cbSaveAccount);
+        edtUser = (EditText) findViewById(R.id.edtUser);
+        edtPass = (EditText) findViewById(R.id.edtPass);
+
+
+        // cần phải intent checkBox bên MainActivity
+//        if(cbSavePassword.isChecked()){
+//            edtUser.setText(edtUser.getText());
+//            edtPass.setText(edtPass.getText());
+//        }  else {
+//            edtUser.setText(edtUser.getText());
+//            edtPass.setText("");
+//        }
+
 
         rcvLoLItem = (RecyclerView) findViewById(R.id.rcvLoLItem);
         listMenu.add(new LeagueOfLegendsItem(R.drawable.item_01,"Búa Rìu Sát Thần", "MFG: 06/03/2020", 3300, 0, R.drawable.dollars, R.drawable.plus_item, R.drawable.minus_item));
@@ -51,7 +78,7 @@ public class LeagueOfLegendsItemShop extends AppCompatActivity {
         listMenu.add(new LeagueOfLegendsItem(R.drawable.item_15,"Thương Phục Hận", "MFG: 27/02/2020", 3400, 0, R.drawable.dollars, R.drawable.plus_item, R.drawable.minus_item));
         listMenu.add(new LeagueOfLegendsItem(R.drawable.item_16,"Tim Băng", "MFG: 19/08/2020", 2700, 0, R.drawable.dollars, R.drawable.plus_item, R.drawable.minus_item));
         listMenu.add(new LeagueOfLegendsItem(R.drawable.item_17,"Vô Cực Kiếm", "MFG: 15/08/2020", 3400, 0, R.drawable.dollars, R.drawable.plus_item, R.drawable.minus_item));
-        listMenu.add(new LeagueOfLegendsItem(R.drawable.item_18,"Vọng Âm Luden", "MFG: 27/07/2020", 3400, 0, R.drawable.dollars, R.drawable.plus_item, R.drawable.minus_item));
+        listMenu.add(new LeagueOfLegendsItem(R.drawable.item_18,"Bão Tố Luden", "MFG: 27/07/2020", 3400, 0, R.drawable.dollars, R.drawable.plus_item, R.drawable.minus_item));
 
         ItemLoLAdapter itemLoLAdapter = new ItemLoLAdapter(listMenu, LeagueOfLegendsItemShop.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(LeagueOfLegendsItemShop.this, RecyclerView.VERTICAL, false);
@@ -107,6 +134,51 @@ public class LeagueOfLegendsItemShop extends AppCompatActivity {
                 intentOrder.putExtra("sumPrice", tvPay.getText().toString());
                 intentOrder.putParcelableArrayListExtra("listOrder", (ArrayList<? extends Parcelable>) listCart);
                 startActivity(intentOrder);
+            }
+        });
+
+        dialogLogOut = new Dialog(LeagueOfLegendsItemShop.this);
+        dialogLogOut.setContentView(R.layout.dialog_log_out);
+        dialogLogOut.setCancelable(false);
+        dialogLogOut.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background_dialog_dangky));
+        dialogLogOut.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialogLogOut.getWindow().getAttributes().windowAnimations = R.style.animation;
+
+        tvQuestionLogOut = (TextView) dialogLogOut.findViewById(R.id.tvQuestionLogOut);
+        btnLogOutYes = (Button) dialogLogOut.findViewById(R.id.btnLogOutYes);
+        btnLogOutNo = (Button) dialogLogOut.findViewById(R.id.btnLogOutNo);
+        progressBarLogOut = (ProgressBar) dialogLogOut.findViewById(R.id.progressBarLogOut);
+
+        progressBarLogOut.setVisibility(View.INVISIBLE);
+
+        imgLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvQuestionLogOut.setText("Quý khách chắc chắn muốn đăng xuất khỏi tài khoản?");
+                dialogLogOut.show();
+            }
+        });
+
+        btnLogOutYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressBarLogOut.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBarLogOut.setVisibility(View.INVISIBLE);
+                        dialogLogOut.dismiss();
+                        Intent intentLogOut = new Intent(LeagueOfLegendsItemShop.this, MainActivity.class);
+                        startActivity(intentLogOut);
+                    }
+                },3000);
+            }
+        });
+
+        btnLogOutNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogLogOut.dismiss();
             }
         });
     }

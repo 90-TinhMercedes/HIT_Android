@@ -109,7 +109,7 @@ public class PayYourCart extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBarConfirm.setVisibility(View.VISIBLE);
-                Toast.makeText(PayYourCart.this, "Please wait...", Toast.LENGTH_LONG).show();
+                Toast.makeText(PayYourCart.this, "Please wait...", Toast.LENGTH_SHORT).show();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -118,7 +118,7 @@ public class PayYourCart extends AppCompatActivity {
                         listOrder.clear();
                         itemLoLAdapter.notifyDataSetChanged();
                         dialogConfirmPay.dismiss();
-                        Toast.makeText(PayYourCart.this, "Xác nhận thanh toán đơn hàng thành công. Quý khách vui lòng xem thời gian dự kiện nhận hàng tại mục Thông Báo.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(PayYourCart.this, "Xác nhận thanh toán đơn hàng thành công. Quý khách vui lòng xem thời gian dự kiến nhận hàng tại mục Thông Báo.", Toast.LENGTH_LONG).show();
                         Toast.makeText(PayYourCart.this, "Màn hình sẽ chuyển hướng trong 3s", Toast.LENGTH_SHORT).show();
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -127,9 +127,9 @@ public class PayYourCart extends AppCompatActivity {
                                 Intent intentReOrder = new Intent(PayYourCart.this, LeagueOfLegendsItemShop.class);
                                 startActivity(intentReOrder);
                             }
-                        },8000);
+                        },9000);
                     }
-                }, 4500);
+                }, 3000);
             }
         });
         btnConfirmNo.setOnClickListener(new View.OnClickListener() {
@@ -169,9 +169,9 @@ public class PayYourCart extends AppCompatActivity {
                                 Intent intentReOder = new Intent(PayYourCart.this, LeagueOfLegendsItemShop.class);
                                 startActivity(intentReOder);
                             }
-                        }, 5000);
+                        }, 5500);
                     }
-                }, 4500);
+                }, 3000);
             }
         });
 
@@ -183,8 +183,6 @@ public class PayYourCart extends AppCompatActivity {
         });
 
     }
-
-
 
     private void Mappings() {
         imgBack = (ImageView) findViewById(R.id.imgBack);

@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     prgbLogIn.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(MainActivity.this, "Thông tin tài khoản hoặc Mật khẩu không chính xác.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Thông tin Tài khoản hoặc Mật khẩu không chính xác.", Toast.LENGTH_SHORT).show();
                                 }
                             }, 3000);
                         } else if (edtUser.getText().toString().compareTo(x.getUsername()) != 0 && edtPass.getText().toString().compareTo(x.getPassword()) == 0){
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     prgbLogIn.setVisibility(View.INVISIBLE);
-                                    Toast.makeText(MainActivity.this, "Thông tin tài khoản hoặc Mật khẩu không chính xác.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Thông tin Tài khoản hoặc Mật khẩu không chính xác.", Toast.LENGTH_SHORT).show();
                                 }
                             }, 3000);
                         }
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog);
                 builder.setTitle("Are you sure you want to exit app?");
-                builder.setMessage("App: League of Legends");
+                builder.setMessage("App: League of Legends Shop");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

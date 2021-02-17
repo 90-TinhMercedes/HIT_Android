@@ -14,10 +14,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView;
-    RecyclerView rcStudents;
-    List<ChampLoL> list = new ArrayList<>();
-    RecyclerView rcChampLoL;
+    private ChampAdapter adapter;
+    private List<ChampLoL> list;
+    RecyclerView rcChamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,34 +48,39 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        rcChampLoL = (RecyclerView) findViewById(R.id.rcChampLoL);
-        list.add(new ChampLoL(R.drawable.ic_launcher_background, "Veigar", "Tiểu Quỷ"));
-        list.add(new ChampLoL(R.drawable.ic_launcher_background, "Yasuo", "Tiểu Quỷ"));
-        list.add(new ChampLoL(R.drawable.ic_launcher_background, "Zed", "Tiểu Quỷ"));
-        list.add(new ChampLoL(R.drawable.ic_launcher_background, "Master Yi", "Tiểu Quỷ"));
-        list.add(new ChampLoL(R.drawable.ic_launcher_background, "Yone", "Tiểu Quỷ"));
+        rcChamp = findViewById(R.id.rcChampLoL);
+        list = new ArrayList<>();
+        list.add(new ChampLoL(R.drawable.logo_lol, "Veigar", "Bậc Thầy Tiểu Quỷ"));
+        list.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        list.add(new ChampLoL(R.drawable.logo_lol, "Zed", "Chúa Tể Bóng Tối"));
+        list.add(new ChampLoL(R.drawable.logo_lol, "Teemo", "Trinh sát nhanh nhẹn"));
+        list.add(new ChampLoL(R.drawable.logo_lol, "Katarina", "Ác Kiếm"));
 
-        ChampAdapter champAdapter = new ChampAdapter(list, MainActivity.this);
+        adapter = new ChampAdapter(list, MainActivity.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
-//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 2, RecyclerView.HORIZONTAL, false);
 
-        rcChampLoL.setLayoutManager(layoutManager);
-        rcChampLoL.setAdapter(champAdapter);
-        champAdapter.setWhenOnClickItem(new WhenOnClickItem() {
+        rcChamp.setLayoutManager(layoutManager);
+        rcChamp.setAdapter(adapter);
+
+        adapter.setWhenClickItem(new WhenClickItem() {
             @Override
             public void onClickImage(ChampLoL champLoL) {
                 Toast.makeText(MainActivity.this, champLoL.getAvatar(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onClickChamp(ChampLoL champLoL) {
+            public void onCLickChamp(ChampLoL champLoL) {
                 Toast.makeText(MainActivity.this, champLoL.getChamp(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onCLickInfo(ChampLoL champLoL) {
+            public void onClickInfo(ChampLoL champLoL) {
                 Toast.makeText(MainActivity.this, champLoL.getInfo(), Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
     }
 }

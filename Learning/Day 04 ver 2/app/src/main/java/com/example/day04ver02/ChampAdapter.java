@@ -13,35 +13,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> {
-
-    List<ChampLoL> list; // Bước 2
+    List<ChampLoL> list;
     Context context;
+    WhenClickItem whenClickItem;
 
-    // sau Interface WhenOnClickItem
-    WhenOnClickItem whenOnClickItem;
-
-    public void setWhenOnClickItem(WhenOnClickItem whenOnClickItem) {
-        this.whenOnClickItem = whenOnClickItem;
+    public void setWhenClickItem(WhenClickItem whenClickItem) {
+        this.whenClickItem = whenClickItem;
     }
 
-    // Bước 3
     public ChampAdapter(List<ChampLoL> list, Context context) {
         this.list = list;
         this.context = context;
     }
 
-
     @NonNull
     @Override
     public ChampAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext()); // Bước 1
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.champ_lol, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
-
         return viewHolder;
     }
 
-    // Bước 5
     @Override
     public void onBindViewHolder(@NonNull ChampAdapter.ViewHolder holder, int position) {
         ChampLoL champLoL = list.get(position);
@@ -51,42 +44,41 @@ public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> 
         holder.imgAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                whenOnClickItem.onClickImage(champLoL);
+                whenClickItem.onClickImage(champLoL);
             }
         });
         holder.tvChamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                whenOnClickItem.onClickChamp(champLoL);
+                whenClickItem.onCLickChamp(champLoL);
             }
         });
         holder.tvInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                whenOnClickItem.onCLickInfo(champLoL);
+                whenClickItem.onClickInfo(champLoL);
             }
         });
     }
 
-    // truyền vào size của list
     @Override
     public int getItemCount() {
         return list.size();
     }
 
-
-    // nơi ánh xạ
-    // Bước 4
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imgAvatar;
         TextView tvChamp;
         TextView tvInfo;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgAvatar = itemView.findViewById(R.id.imgAvatar);
             tvChamp = itemView.findViewById(R.id.tvChamp);
             tvInfo = itemView.findViewById(R.id.tvInfo);
+
+
+
+
         }
     }
 }

@@ -127,7 +127,7 @@ public class PayYourCart extends AppCompatActivity {
                                 Intent intentReOrder = new Intent(PayYourCart.this, LeagueOfLegendsItemShop.class);
                                 startActivity(intentReOrder);
                             }
-                        },9000);
+                        },7000);
                     }
                 }, 3000);
             }
@@ -169,7 +169,7 @@ public class PayYourCart extends AppCompatActivity {
                                 Intent intentReOder = new Intent(PayYourCart.this, LeagueOfLegendsItemShop.class);
                                 startActivity(intentReOder);
                             }
-                        }, 5500);
+                        }, 5000);
                     }
                 }, 3000);
             }

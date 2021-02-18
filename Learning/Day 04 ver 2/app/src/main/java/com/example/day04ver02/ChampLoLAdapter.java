@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> {
+public class ChampLoLAdapter extends RecyclerView.Adapter<ChampLoLAdapter.ViewHolder> {
     List<ChampLoL> list;
     Context context;
     WhenClickItem whenClickItem;
@@ -21,14 +21,14 @@ public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> 
         this.whenClickItem = whenClickItem;
     }
 
-    public ChampAdapter(List<ChampLoL> list, Context context) {
+    public ChampLoLAdapter(List<ChampLoL> list, Context context) {
         this.list = list;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ChampAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ChampLoLAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.champ_lol, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
@@ -36,7 +36,7 @@ public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChampAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ChampLoLAdapter.ViewHolder holder, int position) {
         ChampLoL champLoL = list.get(position);
         holder.imgAvatar.setImageResource(champLoL.getAvatar());
         holder.tvChamp.setText(champLoL.getChamp());
@@ -44,19 +44,19 @@ public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> 
         holder.imgAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                whenClickItem.onClickImage(champLoL);
+                whenClickItem.clickAvatar(champLoL);
             }
         });
         holder.tvChamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                whenClickItem.onCLickChamp(champLoL);
+                whenClickItem.clickChamp(champLoL);
             }
         });
         holder.tvInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                whenClickItem.onClickInfo(champLoL);
+                whenClickItem.clickInfo(champLoL);
             }
         });
     }
@@ -75,10 +75,6 @@ public class ChampAdapter extends RecyclerView.Adapter<ChampAdapter.ViewHolder> 
             imgAvatar = itemView.findViewById(R.id.imgAvatar);
             tvChamp = itemView.findViewById(R.id.tvChamp);
             tvInfo = itemView.findViewById(R.id.tvInfo);
-
-
-
-
         }
     }
 }

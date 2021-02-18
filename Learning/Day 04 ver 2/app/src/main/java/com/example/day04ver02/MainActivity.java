@@ -13,72 +13,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ChampAdapter adapter;
-    private List<ChampLoL> list;
-    RecyclerView rcChamp;
+    private RecyclerView rcChampLoL;
+    private ChampLoLAdapter champLoLAdapter;
+    private List<ChampLoL> champLoLList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        listView = (ListView) findViewById(R.id.listView);
-//        List<String> list = new ArrayList<>();
-//        list.add("Tình");
-//        list.add("Nam");
-//        list.add("Tùng");
-//        list.add("Tâm");
-//        list.add("Oanh");
-//        list.add("Tình");
-//        list.add("Nam");
-//        list.add("Tùng");
-//        list.add("Tâm");
-//        list.add("Oanh");
-//        list.add("Tình");
-//        list.add("Nam");
-//        list.add("Tùng");
-//        list.add("Tâm");
-//        list.add("Oanh");
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
-//        listView.setAdapter(adapter);
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(MainActivity.this, list.get(position), Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        rcChampLoL = findViewById(R.id.rcChampLoL);
+        champLoLList = new ArrayList<>();
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
+        champLoLList.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
 
-        rcChamp = findViewById(R.id.rcChampLoL);
-        list = new ArrayList<>();
-        list.add(new ChampLoL(R.drawable.logo_lol, "Veigar", "Bậc Thầy Tiểu Quỷ"));
-        list.add(new ChampLoL(R.drawable.logo_lol, "Yasuo", "Kẻ Bất Dung Thứ"));
-        list.add(new ChampLoL(R.drawable.logo_lol, "Zed", "Chúa Tể Bóng Tối"));
-        list.add(new ChampLoL(R.drawable.logo_lol, "Teemo", "Trinh sát nhanh nhẹn"));
-        list.add(new ChampLoL(R.drawable.logo_lol, "Katarina", "Ác Kiếm"));
-
-        adapter = new ChampAdapter(list, MainActivity.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
+        champLoLAdapter = new ChampLoLAdapter(champLoLList, MainActivity.this);
 
-        rcChamp.setLayoutManager(layoutManager);
-        rcChamp.setAdapter(adapter);
+        rcChampLoL.setLayoutManager(layoutManager);
+        rcChampLoL.setAdapter(champLoLAdapter);
 
-        adapter.setWhenClickItem(new WhenClickItem() {
+        champLoLAdapter.setWhenClickItem(new WhenClickItem() {
             @Override
-            public void onClickImage(ChampLoL champLoL) {
-                Toast.makeText(MainActivity.this, champLoL.getAvatar(), Toast.LENGTH_SHORT).show();
+            public void clickAvatar(ChampLoL champLoL) {
+                Toast.makeText(MainActivity.this, "League of Legends", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onCLickChamp(ChampLoL champLoL) {
+            public void clickChamp(ChampLoL champLoL) {
                 Toast.makeText(MainActivity.this, champLoL.getChamp(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onClickInfo(ChampLoL champLoL) {
+            public void clickInfo(ChampLoL champLoL) {
                 Toast.makeText(MainActivity.this, champLoL.getInfo(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
 

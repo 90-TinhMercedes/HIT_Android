@@ -1,15 +1,11 @@
 package com.example.day04ver02;
 
 public class ChampLoL {
-
     int avatar;
     String champ;
     String info;
 
-    public ChampLoL(int avatar, String champ, String info) {
-        this.avatar = avatar;
-        this.champ = champ;
-        this.info = info;
+    public ChampLoL() {
     }
 
     public int getAvatar() {
@@ -33,6 +29,12 @@ public class ChampLoL {
     }
 
     public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public ChampLoL(int avatar, String champ, String info) {
+        this.avatar = avatar;
+        this.champ = champ;
         this.info = info;
     }
 }

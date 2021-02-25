@@ -86,8 +86,6 @@ public class LeagueOfLegendsItemShop extends AppCompatActivity {
         rcvLoLItem.setLayoutManager(layoutManager);
         rcvLoLItem.setAdapter(itemLoLAdapter);
 
-
-
         itemLoLAdapter.setWhenClickItem(new WhenClickItem() {
             @Override
             public void clickPlusItem(LeagueOfLegendsItem leagueOfLegendsItem) {

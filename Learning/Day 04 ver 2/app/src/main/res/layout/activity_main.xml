@@ -4,9 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:hint="Name"
+        android:id="@+id/edtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:inputType="number"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:hint="Age"
+        android:id="@+id/edtAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnSubmit"
+        android:textStyle="italic"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:id="@+id/rcChampLoL"
         android:layout_width="match_parent"
         android:layout_height="350dp">

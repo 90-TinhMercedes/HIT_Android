@@ -5,9 +5,6 @@ public class ChampLoL {
     String champ;
     String info;
 
-    public ChampLoL() {
-    }
-
     public int getAvatar() {
         return avatar;
     }

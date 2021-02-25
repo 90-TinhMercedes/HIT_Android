@@ -72,9 +72,9 @@ public class ChampLoLAdapter extends RecyclerView.Adapter<ChampLoLAdapter.ViewHo
         TextView tvInfo;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgAvatar = itemView.findViewById(R.id.imgAvatar);
-            tvChamp = itemView.findViewById(R.id.tvChamp);
-            tvInfo = itemView.findViewById(R.id.tvInfo);
+            imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
+            tvChamp = (TextView) itemView.findViewById(R.id.tvChamp);
+            tvInfo = (TextView) itemView.findViewById(R.id.tvInfo);
         }
     }
 }

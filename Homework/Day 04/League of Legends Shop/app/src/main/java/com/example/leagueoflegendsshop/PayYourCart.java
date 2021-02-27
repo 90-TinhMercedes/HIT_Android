@@ -81,6 +81,7 @@ public class PayYourCart extends AppCompatActivity {
         progressBarConfirm = (ProgressBar) dialogConfirmPay.findViewById(R.id.progressBarConfirm);
         btnConfirmYes = (Button) dialogConfirmPay.findViewById(R.id.btnConfirmYes);
         btnConfirmNo = (Button) dialogConfirmPay.findViewById(R.id.btnConfirmNo);
+
         tvQuestionPayCancel = (TextView) dialogCancelPay.findViewById(R.id.tvQuestionPayCancel);
         progressBarCancel = (ProgressBar) dialogCancelPay.findViewById(R.id.progressBarCancel);
         btnCancelYes = (Button) dialogCancelPay.findViewById(R.id.btnCancelYes);

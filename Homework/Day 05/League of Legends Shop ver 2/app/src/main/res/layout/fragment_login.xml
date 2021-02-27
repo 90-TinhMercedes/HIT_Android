@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:scaleType="fitXY"
+            android:src="@drawable/yasuo_background_02"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <EditText
+
+            android:id="@+id/edt_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/edt_dang_nhap"
+            android:drawableStart="@drawable/ic_account"
+            android:drawablePadding="10dp"
+            android:hint="Username"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_username"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/edt_dang_nhap"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="10dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/linear_option_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_password"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:weightSum="2">
+
+            <CheckBox
+                android:id="@+id/cb_save_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/edt_dang_nhap"
+                android:checked="true"
+                android:text="Save password"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/tv_forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/edt_dang_nhap"
+                android:padding="5dp"
+                android:text="Forgot password?"
+                android:textColor="@color/black"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linear_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linear_option_account"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:background="@drawable/button_custom"
+                android:padding="10dp"
+                android:id="@+id/btn_log_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="Log in"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
+            <Button
+                android:background="@drawable/button_custom"
+                android:padding="10dp"
+                android:id="@+id/btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_tinh_mercedes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="280dp"
+            android:text="© 2021 TinhMercedes"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        <ProgressBar
+            android:id="@+id/progress_load_log_in"
+            android:layout_centerInParent="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <ImageView
+            android:layout_marginTop="200dp"
+            android:id="@+id/imgTurnOff"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/turn_off"
+            android:layout_below="@+id/linear_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</layout>

@@ -16,10 +16,10 @@ public class ItemLoLAdapter extends RecyclerView.Adapter<ItemLoLAdapter.ViewHold
 
     List<LeagueOfLegendsItem> list;
     Context context;
-    WhenClickItem whenClickItem;
+    IWhenClickItem mIWhenClickItem;
 
-    public void setWhenClickItem(WhenClickItem whenClickItem) {
-        this.whenClickItem = whenClickItem;
+    public void setmIWhenClickItem(IWhenClickItem mIWhenClickItem) {
+        this.mIWhenClickItem = mIWhenClickItem;
     }
 
     public ItemLoLAdapter(List<LeagueOfLegendsItem> list, Context context) {
@@ -52,14 +52,14 @@ public class ItemLoLAdapter extends RecyclerView.Adapter<ItemLoLAdapter.ViewHold
         holder.imgPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                whenClickItem.clickPlusItem(lolItem);
+                mIWhenClickItem.clickPlusItem(lolItem);
             }
         });
 
         holder.imgMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                whenClickItem.clickMinusItem(lolItem);
+                mIWhenClickItem.clickMinusItem(lolItem);
             }
         });
 

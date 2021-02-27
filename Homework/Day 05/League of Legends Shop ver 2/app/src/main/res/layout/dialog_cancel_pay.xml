@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:background="@color/white"
+    android:padding="22dp">
+
+    <TextView
+        android:id="@+id/tv_question_pay_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Xác nhận thanh toán 140000$ bằng hình thức: Smart Banking?"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="italic|bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_question_pay_cancel"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_cancel_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/button_dang_ky"
+            android:text="No"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="italic|bold" />
+
+        <Button
+            android:id="@+id/btn_cancel_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/button_dang_ky"
+            android:text="Yes"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="italic|bold" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_marginTop="15dp"
+        android:id="@+id/progress_bar_cancel"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

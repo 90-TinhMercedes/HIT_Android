@@ -86,7 +86,7 @@ public class LeagueOfLegendsItemShop extends AppCompatActivity {
         rcvLoLItem.setLayoutManager(layoutManager);
         rcvLoLItem.setAdapter(itemLoLAdapter);
 
-        itemLoLAdapter.setWhenClickItem(new WhenClickItem() {
+        itemLoLAdapter.setmIWhenClickItem(new IWhenClickItem() {
             @Override
             public void clickPlusItem(LeagueOfLegendsItem leagueOfLegendsItem) {
                 int sumAmount = Integer.parseInt(tvSumAmount.getText().toString());

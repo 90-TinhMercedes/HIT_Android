@@ -1,6 +1,7 @@
 package com.example.day06ver01;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,11 +16,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
+import okio.BufferedSource;
 
 public class MainActivity extends AppCompatActivity {
     String json = "{\n" +
@@ -78,8 +84,11 @@ public class MainActivity extends AppCompatActivity {
             "}";
 
     String url = "https://demo-b5.herokuapp.com/api/accounts";
-    Button btnGet, btnPost, btnPut, btnDelete;
+    Button btnGet, btnPost, btnPut, btnDelete, btnNcov;
     TextView textView;
+
+    public static final String urlNcov = "https://ncov.trungbt.xyz/countries";
+    Moshi moshi = new Moshi.Builder().build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
 //        } catch (JSONException e) {
 //            e.printStackTrace();
 //        }
+
         Mappings();
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
         btnGet.setOnClickListener(new View.OnClickListener() {
@@ -183,6 +193,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
+
+
                 };
                 requestQueue.add(stringRequest);
             }
@@ -254,6 +266,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //convert nhanh đối từ JSON sang Java
+        StringRequest getAllCountries = new StringRequest(Request.Method.GET, urlNcov, response ->{
+            try {
+                JsonAdapter<Country[]> jsonAdapter = moshi.adapter(Country[].class);
+                Country[] listCountries = jsonAdapter.fromJson(response);
+                if (listCountries != null){
+                    for (Country country : listCountries){
+                        Log.d("Country", country.toString());
+                    }
+                } else {
+                    Log.d("TAG", "response null");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.d("TAG", response);
+        }, error -> {
+            Log.e("err", error.getMessage());
+        });
+
+        btnNcov.setOnClickListener(view ->{
+            requestQueue.add(getAllCountries);
+        });
+
     }
 
     private void Mappings() {
@@ -262,5 +298,6 @@ public class MainActivity extends AppCompatActivity {
         btnPut = findViewById(R.id.btn_put);
         btnDelete = findViewById(R.id.btn_delete);
         textView = findViewById(R.id.text_view);
+        btnNcov = findViewById(R.id.btn_ncov);
     }
 }

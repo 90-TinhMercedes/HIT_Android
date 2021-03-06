@@ -1,38 +1,63 @@
 package com.example.searchncovi;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SearchFragment extends Fragment {
+    private static RecyclerView rcvSearchResult;
+    private static ItemSearchNcoviAdapter adapter;
+    private static List<InformationNcoviItem> listSearch;
+    private static EditText edtSearch;
+    private static Button btnUpdate;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final String urlNcov = "https://ncov.trungbt.xyz/countries";
+    Moshi moshi = new Moshi.Builder().build();
+    Type countryType = Types.newParameterizedType(List.class, InformationNcoviItem.class);
+    final JsonAdapter<List<InformationNcoviItem>> listJsonAdapter = moshi.adapter(countryType);
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
+    public static SearchFragment newInstance() {
         SearchFragment fragment = new SearchFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -41,21 +66,107 @@ public class SearchFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        TextView textView = view.findViewById(R.id.text_view_fragment);
-        String sTitle = getArguments().getString("title");
-        textView.setText(sTitle);
+        rcvSearchResult = view.findViewById(R.id.recycler_view_search_result);
+        edtSearch = view.findViewById(R.id.edt_search);
+        btnUpdate = view.findViewById(R.id.btn_update_data);
+        listSearch = new ArrayList<>();
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        StringRequest getAllCountryResult = new StringRequest(Request.Method.GET, urlNcov, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String arrayResult = response;
+                try {
+                    JSONArray jsonArray = new JSONArray(arrayResult);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String country = jsonObject.getString("Country_Region");
+                        long confirmed = jsonObject.getLong("Confirmed");
+                        long deaths = jsonObject.getLong("Deaths");
+                        long recovered = jsonObject.getLong("Recovered");
+                        listSearch.add(new InformationNcoviItem(country, confirmed, deaths, recovered));
+
+//                        for (InformationNcoviItem item : listSearch){
+//                            Log.d("Country", item.toString());
+//                        }
+                        adapter = new ItemSearchNcoviAdapter(listSearch, getContext());
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+                        rcvSearchResult.setLayoutManager(layoutManager);
+                        rcvSearchResult.setAdapter(adapter);
+                        layoutAnimation(rcvSearchResult);
+                        adapter.notifyDataSetChanged();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+//                try {
+//                    final List<InformationNcoviItem> listResult = listJsonAdapter.fromJson(response);
+//                    listResult.size();
+//                    adapter = new ItemSearchNcoviAdapter(listResult);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "No Internet!!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(getAllCountryResult);
+
+//        adapter = new ItemSearchNcoviAdapter(listSearch);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+//        rcvSearchResult.setLayoutManager(layoutManager);
+//        rcvSearchResult.setAdapter(adapter);
+
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutAnimation(rcvSearchResult);
+            }
+        });
+
         return view;
+    }
+
+
+    public void layoutAnimation(RecyclerView recyclerView){
+        Context context = recyclerView.getContext();
+        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_silde_right);
+        recyclerView.setLayoutAnimation(layoutAnimationController);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
+    }
+
+    private void filter(String text) {
+        ArrayList<InformationNcoviItem> filteredList = new ArrayList<>();
+        for(InformationNcoviItem item : listSearch){
+            if (item.getCountry_Region().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
     }
 }

@@ -1,21 +1,30 @@
 package com.example.searchncovi;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import java.util.Random;
+
 public class MainActivity2 extends AppCompatActivity {
 
     ProgressBar progressBarLoadApp;
     ImageView imgBackground;
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +36,12 @@ public class MainActivity2 extends AppCompatActivity {
         progressBarLoadApp = findViewById(R.id.progress_load_app);
         imgBackground = findViewById(R.id.img_covid);
 
-        CountDownTimer countDownTimer = new CountDownTimer(2500, 20) {
+        CountDownTimer countDownTimer = new CountDownTimer(4500, 250) {
             @Override
             public void onTick(long millisUntilFinished) {
                 int current = progressBarLoadApp.getProgress();
-                progressBarLoadApp.setProgress(current + 1);
+                int percent = random.nextInt((10 - 2) + 1) + 2;
+                progressBarLoadApp.setProgress(current + percent);
             }
 
             @Override
@@ -53,6 +63,6 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
-
     }
+
 }

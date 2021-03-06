@@ -1,17 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_search_result"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="12dp"
+    android:paddingTop="8dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="12dp"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
     tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:textSize="25sp"
-        android:gravity="center"
-        android:id="@+id/text_view_fragment"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Search Ncovi" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/covid_19" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/edt_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_search_box"
+        android:drawableEnd="@drawable/ic_baseline_search_24"
+        android:drawablePadding="15dp"
+        android:enabled="true"
+        android:hint="Search"
+        android:padding="7dp"
+        android:paddingStart="10sp"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:textColorHint="#AB000000"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_search_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_update_data"
+        android:layout_below="@+id/edt_search"
+        android:layoutAnimation="@anim/layout_silde_right" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_update_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Update"
+        android:textAllCaps="false"
+        android:textStyle="italic" />
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/fragment_container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_below="@+id/edt_search">-->
+
+
+    <!--    </FrameLayout>-->
+
+
+</RelativeLayout>

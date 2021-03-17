@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                 ContextCompat.getColor(getApplicationContext(), R.color.purple_200)
                         );
                         badgeDrawable.setVisible(true);
-                        badgeDrawable.setNumber(6);
+                        badgeDrawable.setNumber(7);
                         badgeDrawable.setMaxCharacterCount(3);
                         break;
                     }

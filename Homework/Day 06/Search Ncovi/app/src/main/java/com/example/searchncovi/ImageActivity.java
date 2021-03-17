@@ -131,7 +131,7 @@ public class ImageActivity extends AppCompatActivity {
                 });
                 requestQueue.add(getAllLinkImage);
 //                new loadImageInternet().execute(listLink.get(0).getImage_url());
-                if (page <= 5) {
+                if (page <= 47) {
                     page += 1;
                 }
                 Toast.makeText(ImageActivity.this, "Loading pictures...", Toast.LENGTH_LONG).show();

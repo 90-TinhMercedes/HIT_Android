@@ -36,12 +36,13 @@ public class MainActivity2 extends AppCompatActivity {
         progressBarLoadApp = findViewById(R.id.progress_load_app);
         imgBackground = findViewById(R.id.img_covid);
 
-        CountDownTimer countDownTimer = new CountDownTimer(4500, 250) {
+        CountDownTimer countDownTimer = new CountDownTimer(3000, 25) {
             @Override
             public void onTick(long millisUntilFinished) {
                 int current = progressBarLoadApp.getProgress();
-                int percent = random.nextInt((10 - 2) + 1) + 2;
-                progressBarLoadApp.setProgress(current + percent);
+//                int percent = random.nextInt((10 - 2) + 1) + 2;
+//                progressBarLoadApp.setProgress(current + percent);
+                progressBarLoadApp.setProgress(current + 1);
             }
 
             @Override

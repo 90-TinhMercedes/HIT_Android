@@ -73,6 +73,7 @@ public class SearchFragment extends Fragment {
         rcvSearchResult = view.findViewById(R.id.recycler_view_search_result);
         edtSearch = view.findViewById(R.id.edt_search);
         btnUpdate = view.findViewById(R.id.btn_update_data);
+        btnUpdate.setVisibility(View.INVISIBLE);
         listSearch = new ArrayList<>();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
@@ -99,6 +100,7 @@ public class SearchFragment extends Fragment {
                         rcvSearchResult.setAdapter(adapter);
                         layoutAnimation(rcvSearchResult);
                         adapter.notifyDataSetChanged();
+                        btnUpdate.setVisibility(View.VISIBLE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -114,7 +116,7 @@ public class SearchFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "No Internet!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "No Internet!", Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(getAllCountryResult);
@@ -160,13 +162,23 @@ public class SearchFragment extends Fragment {
         recyclerView.scheduleLayoutAnimation();
     }
 
+    public void layoutAnimationDownToUp(RecyclerView recyclerView){
+        Context context = recyclerView.getContext();
+        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_down_to_up);
+        recyclerView.setLayoutAnimation(layoutAnimationController);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
+    }
+
     private void filter(String text) {
         ArrayList<InformationNcoviItem> filteredList = new ArrayList<>();
         for(InformationNcoviItem item : listSearch){
             if (item.getCountry_Region().toLowerCase().contains(text.toLowerCase())){
                 filteredList.add(item);
             }
+            layoutAnimationDownToUp(rcvSearchResult);
         }
         adapter.filterList(filteredList);
+//        layoutAnimation(rcvSearchResult);
     }
 }

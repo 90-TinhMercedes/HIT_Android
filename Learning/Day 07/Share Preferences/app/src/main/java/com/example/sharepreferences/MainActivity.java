@@ -2,6 +2,7 @@ package com.example.sharepreferences;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,12 +11,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     static final String SHARE_PRE_NAME = "Account";
     EditText edtUsername, edtPassword;
     CheckBox cbSavePassword;
     Button btnLogIn, btnRead;
     SQLHelper sqlHelper;
+    List<Account> accountList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        sqlHelper.insertAccount(new Account("ChiTinhVeigar", "hello"));
+
+//        sqlHelper.insertAccount(new Account("ChiTinhVeigar", "hello"));
+//        sqlHelper.insertAccount(new Account("TinhMercedes", "hello"));
+//        sqlHelper.updateAccount(5, new Account("90_TinhMercedes", "tinhhandsome"));
+//        sqlHelper.deleteAccount(4);
+//        sqlHelper.deleteAllAccounts();
+        accountList = sqlHelper.getAllAccount();
+        Log.d("ListSize", "onCreate: " + accountList.size());
+
+
 
     }
 

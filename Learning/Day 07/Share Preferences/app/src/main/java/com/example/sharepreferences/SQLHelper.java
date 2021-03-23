@@ -2,10 +2,14 @@ package com.example.sharepreferences;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLHelper extends SQLiteOpenHelper {
 
@@ -55,9 +59,38 @@ public class SQLHelper extends SQLiteOpenHelper {
         sqLiteDatabase.update(DB_TABLE_NAME, contentValues, "id=?", new String[]{id + ""});
     }
 
-    public void deleteAccount (int id){
+    public void deleteAccount(int id) {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.delete(DB_TABLE_NAME, "id=?", new String[]{id + ""});
     }
+
+    public void deleteAllAccounts() {
+        sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.delete(DB_TABLE_NAME, null, null);
+    }
+
+    public List<Account> getAllAccount() {
+        List<Account> list = new ArrayList<>();
+        sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.query(DB_TABLE_NAME, null, null, null, null, null, null);
+        while(cursor.moveToNext()){
+            String username = cursor.getString(cursor.getColumnIndex("username"));
+            String password = cursor.getString(cursor.getColumnIndex("password"));
+            list.add(new Account(username, password));
+        }
+        return list;
+    }
+
+    public boolean checkExistsAccount(int id){
+        sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + DB_TABLE_NAME + " WHERE id=?", new String[]{id + ""});
+        if (cursor.getCount() == 1){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 
 }

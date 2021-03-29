@@ -25,8 +25,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import okio.BufferedSource;
-
 public class MainActivity extends AppCompatActivity {
     String json = "{\n" +
             "\"id\": 4,\n" +
@@ -267,12 +265,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //convert nhanh đối từ JSON sang Java
-        StringRequest getAllCountries = new StringRequest(Request.Method.GET, urlNcov, response ->{
+        StringRequest getAllCountries = new StringRequest(Request.Method.GET, urlNcov, response -> {
             try {
                 JsonAdapter<Country[]> jsonAdapter = moshi.adapter(Country[].class);
                 Country[] listCountries = jsonAdapter.fromJson(response);
-                if (listCountries != null){
-                    for (Country country : listCountries){
+                if (listCountries != null) {
+                    for (Country country : listCountries) {
                         Log.d("Country", country.toString());
                     }
                 } else {
@@ -286,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("err", error.getMessage());
         });
 
-        btnNcov.setOnClickListener(view ->{
+        btnNcov.setOnClickListener(view -> {
             requestQueue.add(getAllCountries);
         });
 

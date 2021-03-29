@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class MainActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
-    ViewPager viewPager;
+//    ViewPager viewPager;
     private int INTERNET_PERMISSION_CODE = 1;
 
 

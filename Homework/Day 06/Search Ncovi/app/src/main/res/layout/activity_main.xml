@@ -7,11 +7,11 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-<!--    <View-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="3dp"-->
-<!--        android:background="#F30E5C"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/tab_layout" />-->
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="3dp"-->
+    <!--        android:background="#F30E5C"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/tab_layout" />-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
@@ -19,13 +19,13 @@
         android:layout_height="wrap_content"
         android:background="#F020B6FA"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorHeight="3dp"
         app:tabIndicatorColor="#E80250"
-        app:tabSelectedTextColor="#E80250"
+        app:tabIndicatorHeight="3dp"
         app:tabMode="fixed"
         app:tabPaddingBottom="8dp"
         app:tabPaddingTop="8dp"
-        app:tabTextColor="@color/white"/>
+        app:tabSelectedTextColor="#E80250"
+        app:tabTextColor="@color/white" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager2"

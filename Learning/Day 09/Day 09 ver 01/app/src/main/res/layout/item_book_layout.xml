@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tư Duy Nhanh Và Chậm"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_marginBottom="15dp"
+        android:id="@+id/img_book"
+        android:layout_width="150dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:id="@+id/author_static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/img_book"
+        android:text="Tác giả:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/author_static"
+        android:text="Daniel Kahneman"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/author_static"
+        android:layout_toRightOf="@id/img_book"
+        android:text="160.000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/rate_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/price"
+        android:layout_toRightOf="@+id/img_book"
+        android:drawableEnd="@drawable/star"
+        android:drawablePadding="2dp"
+        android:text="3.6"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/description_static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rate_star"
+        android:layout_toRightOf="@+id/img_book"
+        android:text="Mô tả:"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description_static"
+        android:layout_toRightOf="@+id/img_book"
+        android:text="Chúng ta thường tự cho rằng con người là sinh vật có lý trí mạnh mẽ, khi quyết định hay đánh giá vấn đề luôn kĩ lưỡng và lý tính"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/num_of_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_book"
+        android:layout_gravity="center"
+        android:layout_marginRight="2dp"
+        android:text="10" />
+
+    <TextView
+        android:id="@+id/tv_luot_danh_gia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_book"
+        android:layout_gravity="center"
+        android:layout_toRightOf="@+id/num_of_review"
+        android:text="luot danh gia" />
+
+    <TextView
+        android:id="@+id/categoty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_book"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:text="Sách thiếu niên" />
+
+    <TextView
+        android:id="@+id/num_of_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_book"
+        android:layout_marginRight="2dp"
+        android:layout_toLeftOf="@id/tv_page"
+        android:text="612" />
+
+    <TextView
+        android:id="@+id/tv_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_book"
+        android:layout_alignParentEnd="true"
+        android:text="trang" />
+
+    <TextView
+        android:id="@+id/tv_rank_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/num_of_review"
+        android:layout_marginTop="10dp"
+        android:text="Xếp hạng và đánh giá"
+        android:textSize="20sp" />
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_rank_rate"
+        android:numStars="5"
+        android:rating="4"
+        android:stepSize="0.1" />
+
+    <Button
+        android:id="@+id/btn_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_rank_rate"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/rating_bar"
+        android:text="Rate" />
+
+
+</RelativeLayout>

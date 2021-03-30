@@ -36,18 +36,15 @@ public class ItemBookAdapter extends RecyclerView.Adapter<ItemBookAdapter.ViewHo
         ItemBook item = list.get(position);
         holder.tvTitle.setText(item.getTitle());
         Glide.with(context).load(item.getImgLink()).into(holder.imageBook);
-        holder.tvAuthorStatic.setText(item.getAuthorStatic());
         holder.tvAuthor.setText(item.getAuthor());
         holder.tvPrice.setText(String.valueOf(item.getPrice()));
         holder.tvRateStar.setText(String.valueOf(item.getRateStar()));
-        holder.tvDescriptionStatic.setText(item.getDescriptionStatic());
         holder.tvDescription.setText(item.getDescription());
         holder.tvNumOfReview.setText(String.valueOf(item.getNumOfReview()));
-        holder.tvLuotDanhGia.setText(item.getLuotDanhGia());
         holder.tvCategoty.setText(item.getCategoty());
         holder.tvNumOfPage.setText(String.valueOf(item.getNumOfPage()));
-        holder.tvPage.setText(item.getPage());
-        holder.tvRankAndRate.setText(item.getRankAndRate());
+
+
     }
 
     @Override
@@ -56,26 +53,21 @@ public class ItemBookAdapter extends RecyclerView.Adapter<ItemBookAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvAuthorStatic, tvAuthor, tvPrice, tvRateStar, tvDescriptionStatic, tvDescription,
-                tvNumOfReview, tvLuotDanhGia, tvCategoty, tvNumOfPage, tvPage, tvRankAndRate;
+        TextView tvTitle, tvAuthor, tvPrice, tvRateStar, tvDescription,
+                tvNumOfReview, tvCategoty, tvNumOfPage;
         ImageView imageBook;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tv_title);
             imageBook = itemView.findViewById(R.id.img_book);
-            tvAuthorStatic = itemView.findViewById(R.id.author_static);
             tvAuthor = itemView.findViewById(R.id.author);
             tvPrice = itemView.findViewById(R.id.price);
             tvRateStar = itemView.findViewById(R.id.rate_star);
-            tvDescriptionStatic = itemView.findViewById(R.id.description_static);
             tvDescription = itemView.findViewById(R.id.description);
             tvNumOfReview = itemView.findViewById(R.id.num_of_review);
-            tvLuotDanhGia = itemView.findViewById(R.id.tv_luot_danh_gia);
             tvCategoty = itemView.findViewById(R.id.categoty);
             tvNumOfPage = itemView.findViewById(R.id.num_of_page);
-            tvPage = itemView.findViewById(R.id.tv_page);
-            tvRankAndRate = itemView.findViewById(R.id.tv_rank_rate);
         }
     }
 }

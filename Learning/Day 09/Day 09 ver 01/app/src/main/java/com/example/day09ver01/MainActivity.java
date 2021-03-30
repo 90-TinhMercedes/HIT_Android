@@ -1,6 +1,7 @@
 package com.example.day09ver01;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 String arrayBook = response;
                 try {
                     JSONArray jsonArray = new JSONArray(arrayBook);
-                    for (int i=0; i<jsonArray.length(); i++){
-                        JSONObject jsonObject =jsonArray.getJSONObject(i);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String title = jsonObject.getString("title");
                         String imgLink = jsonObject.getString("imageLink");
                         String author = jsonObject.getString("author");
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         String categoty = jsonObject.getString("categoty");
                         long numOfPage = jsonObject.getLong("numOfPage");
 
-                        list.add(new ItemBook(title, imgLink, "Tác giả:", author, price, rate, "Mô tả:", description, numOfReview, "lượt đánh giá", categoty, numOfPage, "trang", "Nhận xét và đánh giá"));
+                        list.add(new ItemBook(title, imgLink, author, price, rate, description, numOfReview, categoty, numOfPage));
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
                         adapter = new ItemBookAdapter(list, MainActivity.this);
                         recyclerView.setLayoutManager(layoutManager);
@@ -72,28 +73,12 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(MainActivity.this, "No Internet.", Toast.LENGTH_SHORT).show();
             }
         });
 
         requestQueue.add(getAllBook);
 
-
-
-
-
-//        list = new ArrayList<>();
-//        list.add(new ItemBook("AAA", "https://res.cloudinary.com/duzwinp31/image/upload/v1600778648/nb8qtvubqeoushjewxyq.jpg", "Tác giả: ", "author",
-//                160000, 35, "Mô tả: ", "Sách hay", 10, "lượt đánh giá", "Sách thiếu nhi", 100, "trang", "Nhận xét"));
-//        list.add(new ItemBook("AAA", "https://res.cloudinary.com/duzwinp31/image/upload/v1600778648/nb8qtvubqeoushjewxyq.jpg", "Tác giả: ", "author",
-//                160000, 35, "Mô tả: ", "Sách hay", 10, "lượt đánh giá", "Sách thiếu nhi", 100, "trang", "Nhận xét"));
-//        list.add(new ItemBook("AAA", "https://res.cloudinary.com/duzwinp31/image/upload/v1600778648/nb8qtvubqeoushjewxyq.jpg", "Tác giả: ", "author",
-//                160000, 35, "Mô tả: ", "Sách hay", 10, "lượt đánh giá", "Sách thiếu nhi", 100, "trang", "Nhận xét"));
-//
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
-//        adapter = new ItemBookAdapter(list, MainActivity.this);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setAdapter(adapter);
 
     }
 }

@@ -6,52 +6,24 @@ import android.os.Parcelable;
 public class ItemBook implements Parcelable {
     private String title;
     private String imgLink;
-    private String authorStatic;
     private String author;
     private long price;
     private float rateStar;
-    private String descriptionStatic;
     private String description;
     private long numOfReview;
-    private String luotDanhGia;
     private String categoty;
     private long numOfPage;
-    private String page;
-    private String rankAndRate;
-
-    public ItemBook(String title, String imgLink, String authorStatic, String author, long price, float rateStar, String descriptionStatic, String description, long numOfReview, String luotDanhGia, String categoty, long numOfPage, String page, String rankAndRate) {
-        this.title = title;
-        this.imgLink = imgLink;
-        this.authorStatic = authorStatic;
-        this.author = author;
-        this.price = price;
-        this.rateStar = rateStar;
-        this.descriptionStatic = descriptionStatic;
-        this.description = description;
-        this.numOfReview = numOfReview;
-        this.luotDanhGia = luotDanhGia;
-        this.categoty = categoty;
-        this.numOfPage = numOfPage;
-        this.page = page;
-        this.rankAndRate = rankAndRate;
-    }
-
 
     protected ItemBook(Parcel in) {
         title = in.readString();
         imgLink = in.readString();
-        authorStatic = in.readString();
         author = in.readString();
         price = in.readLong();
         rateStar = in.readFloat();
-        descriptionStatic = in.readString();
         description = in.readString();
         numOfReview = in.readLong();
-        luotDanhGia = in.readString();
         categoty = in.readString();
         numOfPage = in.readLong();
-        page = in.readString();
-        rankAndRate = in.readString();
     }
 
     public static final Creator<ItemBook> CREATOR = new Creator<ItemBook>() {
@@ -65,26 +37,6 @@ public class ItemBook implements Parcelable {
             return new ItemBook[size];
         }
     };
-
-    @Override
-    public String toString() {
-        return "ItemBook{" +
-                "title='" + title + '\'' +
-                ", imgLink='" + imgLink + '\'' +
-                ", authorStatic='" + authorStatic + '\'' +
-                ", author='" + author + '\'' +
-                ", price=" + price +
-                ", rateStar=" + rateStar +
-                ", descriptionStatic='" + descriptionStatic + '\'' +
-                ", description='" + description + '\'' +
-                ", numOfReview=" + numOfReview +
-                ", luotDanhGia='" + luotDanhGia + '\'' +
-                ", categoty='" + categoty + '\'' +
-                ", numOfPage=" + numOfPage +
-                ", page='" + page + '\'' +
-                ", rankAndRate='" + rankAndRate + '\'' +
-                '}';
-    }
 
     public String getTitle() {
         return title;
@@ -100,14 +52,6 @@ public class ItemBook implements Parcelable {
 
     public void setImgLink(String imgLink) {
         this.imgLink = imgLink;
-    }
-
-    public String getAuthorStatic() {
-        return authorStatic;
-    }
-
-    public void setAuthorStatic(String authorStatic) {
-        this.authorStatic = authorStatic;
     }
 
     public String getAuthor() {
@@ -134,14 +78,6 @@ public class ItemBook implements Parcelable {
         this.rateStar = rateStar;
     }
 
-    public String getDescriptionStatic() {
-        return descriptionStatic;
-    }
-
-    public void setDescriptionStatic(String descriptionStatic) {
-        this.descriptionStatic = descriptionStatic;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -156,14 +92,6 @@ public class ItemBook implements Parcelable {
 
     public void setNumOfReview(long numOfReview) {
         this.numOfReview = numOfReview;
-    }
-
-    public String getLuotDanhGia() {
-        return luotDanhGia;
-    }
-
-    public void setLuotDanhGia(String luotDanhGia) {
-        this.luotDanhGia = luotDanhGia;
     }
 
     public String getCategoty() {
@@ -182,24 +110,16 @@ public class ItemBook implements Parcelable {
         this.numOfPage = numOfPage;
     }
 
-    public String getPage() {
-        return page;
-    }
-
-    public void setPage(String page) {
-        this.page = page;
-    }
-
-    public String getRankAndRate() {
-        return rankAndRate;
-    }
-
-    public void setRankAndRate(String rankAndRate) {
-        this.rankAndRate = rankAndRate;
-    }
-
-    public static Creator<ItemBook> getCREATOR() {
-        return CREATOR;
+    public ItemBook(String title, String imgLink, String author, long price, float rateStar, String description, long numOfReview, String categoty, long numOfPage) {
+        this.title = title;
+        this.imgLink = imgLink;
+        this.author = author;
+        this.price = price;
+        this.rateStar = rateStar;
+        this.description = description;
+        this.numOfReview = numOfReview;
+        this.categoty = categoty;
+        this.numOfPage = numOfPage;
     }
 
     @Override
@@ -211,17 +131,12 @@ public class ItemBook implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
         dest.writeString(imgLink);
-        dest.writeString(authorStatic);
         dest.writeString(author);
-        dest.writeFloat(price);
+        dest.writeLong(price);
         dest.writeFloat(rateStar);
-        dest.writeString(descriptionStatic);
         dest.writeString(description);
         dest.writeLong(numOfReview);
-        dest.writeString(luotDanhGia);
         dest.writeString(categoty);
         dest.writeLong(numOfPage);
-        dest.writeString(page);
-        dest.writeString(rankAndRate);
     }
 }
